@@ -1,0 +1,4 @@
+Note: Need Dropout
+
+average validation accuracy:  0.6571428537368774
+average test accuracy:  58.33333432674408

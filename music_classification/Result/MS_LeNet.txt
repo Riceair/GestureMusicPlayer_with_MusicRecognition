@@ -1,0 +1,11 @@
+original:
+average validation accuracy:  0.5357142865657807
+average test accuracy:  43.666666746139526
+
+augementation:
+average validation accuracy:  0.49285714626312255
+average test accuracy:  48.99999976158142
+
+frame length 40ms:
+average validation accuracy:  0.4928571343421936
+average test accuracy:  41.99999988079071

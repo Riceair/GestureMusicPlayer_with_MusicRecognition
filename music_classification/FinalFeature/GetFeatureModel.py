@@ -1,7 +1,7 @@
 from tensorflow import keras
 from keras import Sequential
 
-load_model_path = "FinalFeature/MS_test6833.h5"
+load_model_path = "FinalFeature/MS_test7333.h5"
 save_model_path = "FinalFeature/FeatureModel.h5"
 
 model = keras.models.load_model(load_model_path)
