@@ -1,2 +1,3 @@
 music_classification/music/*
 music_classification/Model/*
+music_classification/FinalFeature/*.h5
