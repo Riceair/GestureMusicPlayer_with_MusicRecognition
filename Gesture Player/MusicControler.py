@@ -9,6 +9,7 @@ class MusicControler:
         self.current_song_index=-1
 
     def add_music_list(self,music_list):
+        self.current_song_index=-1
         for music in music_list:
             self.music_list.append(music)
 
@@ -25,7 +26,7 @@ class MusicControler:
         self.current_song_index+=1
         if self.current_song_index>=len(self.music_list) or self.current_song_index<0: #播完了重播 or 播放index<0(一直按上一首)
             self.current_song_index=0
-        
+
         self.pg_mixer.init()
         self.pg_mixer.music.load(self.music_list[self.current_song_index]) #將歌單第一首歌取出
         self.isPlaying=True

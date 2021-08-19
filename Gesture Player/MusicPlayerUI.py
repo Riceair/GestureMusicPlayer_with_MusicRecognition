@@ -234,6 +234,7 @@ class Ui_GesturePlayer(QtWidgets.QMainWindow):
         while self.isCheckPlaying:
             if self.isPlaying and not self.music_controler.is_busy():
                 self.__nextPress()
+            time.sleep(1) #每次執行delay 5秒，以降低資源使用率
 
     def __gestureThreadJob(self):
         try:
@@ -249,7 +250,7 @@ class Ui_GesturePlayer(QtWidgets.QMainWindow):
             ###由於辨識會出現辨識錯誤的情形，因此需要連續出現一定的次數才判定為正確手勢
             current_gesture = 0 #紀錄當前的手勢
             gesture_appear_times = 0 #紀錄當前手勢出現的次數
-            TRUE_APPEAR_TIMES = 25 #連續出現n個frame判為正確
+            TRUE_APPEAR_TIMES = 50 #連續出現n個frame判為正確
             while self.isGesThreadRun:
                 success, img = cap.read()
                 img = detector.findHands(img, draw=True )
@@ -273,7 +274,7 @@ class Ui_GesturePlayer(QtWidgets.QMainWindow):
                             elif current_gesture==STYLE_CHANGE:
                                 self.__stylePress()
                             gesture_appear_times = 0
-                            time.sleep(5)
+                            time.sleep(2)
             cap.release()
             cv2.destroyAllWindows()
             print("Thread End")
