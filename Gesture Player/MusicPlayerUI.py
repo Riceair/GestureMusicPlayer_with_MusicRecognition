@@ -26,7 +26,6 @@ import cv2
 
 class Ui_GesturePlayer(object):
     def setupUi(self, GesturePlayer):
-        ##各種GUI的設定
         GesturePlayer.setObjectName("GesturePlayer")
         GesturePlayer.resize(591, 332)
         self.centralwidget = QtWidgets.QWidget(GesturePlayer)
@@ -35,14 +34,14 @@ class Ui_GesturePlayer(object):
         self.prevButton.setGeometry(QtCore.QRect(30, 230, 171, 81))
         font = QtGui.QFont()
         font.setFamily("Eras Demi ITC")
-        font.setPointSize(48)
+        font.setPointSize(36)
         self.prevButton.setFont(font)
         self.prevButton.setObjectName("prevButton")
         self.nextButton = QtWidgets.QPushButton(self.centralwidget)
         self.nextButton.setGeometry(QtCore.QRect(390, 230, 171, 81))
         font = QtGui.QFont()
         font.setFamily("Eras Demi ITC")
-        font.setPointSize(48)
+        font.setPointSize(36)
         self.nextButton.setFont(font)
         self.nextButton.setCheckable(False)
         self.nextButton.setObjectName("nextButton")
@@ -50,7 +49,7 @@ class Ui_GesturePlayer(object):
         self.pauseButton.setGeometry(QtCore.QRect(220, 270, 151, 41))
         font = QtGui.QFont()
         font.setFamily("Eras Bold ITC")
-        font.setPointSize(20)
+        font.setPointSize(18)
         self.pauseButton.setFont(font)
         self.pauseButton.setObjectName("pauseButton")
         self.songName = QtWidgets.QLabel(self.centralwidget)
@@ -73,7 +72,7 @@ class Ui_GesturePlayer(object):
         self.styleButton.setGeometry(QtCore.QRect(220, 230, 151, 41))
         font = QtGui.QFont()
         font.setFamily("Eras Demi ITC")
-        font.setPointSize(16)
+        font.setPointSize(12)
         self.styleButton.setFont(font)
         self.styleButton.setObjectName("styleButton")
         self.gestureUse = QtWidgets.QCheckBox(self.centralwidget)
@@ -85,15 +84,6 @@ class Ui_GesturePlayer(object):
         font.setWeight(75)
         self.gestureUse.setFont(font)
         self.gestureUse.setObjectName("gestureUse")
-        self.showCameraUse = QtWidgets.QCheckBox(self.centralwidget)
-        self.showCameraUse.setGeometry(QtCore.QRect(20, 100, 141, 41))
-        font = QtGui.QFont()
-        font.setFamily("Arial Black")
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.showCameraUse.setFont(font)
-        self.showCameraUse.setObjectName("showCameraUse")
         self.cameraNum = QtWidgets.QLineEdit(self.centralwidget)
         self.cameraNum.setGeometry(QtCore.QRect(170, 30, 31, 31))
         font = QtGui.QFont()
@@ -124,8 +114,6 @@ class Ui_GesturePlayer(object):
         regex = QtCore.QRegExp("[0-9]")
         validator = QtGui.QRegExpValidator(regex,self.cameraNum)
         self.cameraNum.setValidator(validator)
-        #未啟用手勢操作，不能顯示camera
-        self.showCameraUse.setEnabled(False)
         self.__setEventListener()
 
     def retranslateUi(self, GesturePlayer):
@@ -139,7 +127,6 @@ class Ui_GesturePlayer(object):
         self.className.setText(self._translate("GesturePlayer", ""))
         self.styleButton.setText(self._translate("GesturePlayer", "Style Change"))
         self.gestureUse.setText(self._translate("GesturePlayer", "Gesture"))
-        self.showCameraUse.setText(self._translate("GesturePlayer", "Show Camera"))
         self.cameraNum.setText(self._translate("GesturePlayer", "0"))
         self.label.setText(self._translate("GesturePlayer", "Camera Number:"))
 
@@ -183,7 +170,6 @@ class Ui_GesturePlayer(object):
     def __gesturePress(self): #是否使用手勢操作
         if self.gestureUse.isChecked():
             self.cameraNum.setEnabled(False)
-            self.showCameraUse.setEnabled(True)
             self.__setButtonEnable(False)
 
             self.isGesThreadRun=True #開啟手勢辨識的執行續
@@ -191,8 +177,6 @@ class Ui_GesturePlayer(object):
             t.start()
         elif not self.gestureUse.isChecked():
             self.cameraNum.setEnabled(True)
-            self.showCameraUse.setChecked(False)
-            self.showCameraUse.setEnabled(False)
             self.__setButtonEnable(True)
 
             self.isGesThreadRun=False #關閉手勢辨識的執行續
@@ -206,10 +190,12 @@ class Ui_GesturePlayer(object):
     def __nextPress(self):
         self.music_controler.music_next()
         self.songName.setText(self._translate("GesturePlayer", self.music_controler.getCurrentName()[6:]))
+        self.pauseButton.setText(self._translate("GesturePlayer", "Pause"))
 
     def __prevPress(self):
         self.music_controler.music_prev()
         self.songName.setText(self._translate("GesturePlayer", self.music_controler.getCurrentName()[6:]))
+        self.pauseButton.setText(self._translate("GesturePlayer", "Pause"))
     
     def __pausePress(self):
         self.music_controler.music_pause()
@@ -267,8 +253,6 @@ class Ui_GesturePlayer(object):
                                 self.__stylePress()
                             gesture_appear_times = 0
                             time.sleep(5)
-                if self.showCameraUse.isChecked():
-                    cv2.imshow("Image", img)
             cap.release()
             cv2.destroyAllWindows()
             print("Thread End")

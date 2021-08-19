@@ -26,7 +26,7 @@
     <property name="font">
      <font>
       <family>Eras Demi ITC</family>
-      <pointsize>48</pointsize>
+      <pointsize>36</pointsize>
      </font>
     </property>
     <property name="text">
@@ -45,7 +45,7 @@
     <property name="font">
      <font>
       <family>Eras Demi ITC</family>
-      <pointsize>48</pointsize>
+      <pointsize>36</pointsize>
      </font>
     </property>
     <property name="text">
@@ -67,7 +67,7 @@
     <property name="font">
      <font>
       <family>Eras Bold ITC</family>
-      <pointsize>20</pointsize>
+      <pointsize>18</pointsize>
      </font>
     </property>
     <property name="text">
@@ -130,7 +130,7 @@
     <property name="font">
      <font>
       <family>Eras Demi ITC</family>
-      <pointsize>16</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="text">
@@ -156,27 +156,6 @@
     </property>
     <property name="text">
      <string>Gesture</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="showCameraUse">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>100</y>
-      <width>141</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Arial Black</family>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Show Camera</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="cameraNum">
