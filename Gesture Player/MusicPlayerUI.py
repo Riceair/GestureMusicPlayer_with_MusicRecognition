@@ -11,7 +11,6 @@
 from PlayListGenerator import PlayListGenerator
 from DataRecorder import DataRecorder
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox
 from MusicControler import MusicControler
 import mediapipe as mp
 import numpy as np
@@ -261,6 +260,10 @@ class Ui_GesturePlayer(object):
             cv2.destroyAllWindows()
             self.gestureUse.setChecked(False)
             self.__gesturePress() #開啟失敗，關閉相機
+    def end(self):
+        self.isGesThreadRun=False
+        if self.music_controler.is_busy():
+            self.music_controler.music_stop()
 
 if __name__ == '__main__':  
     app = QtWidgets.QApplication(sys.argv)
@@ -269,4 +272,5 @@ if __name__ == '__main__':
 
     ui.setupUi(MainWindow) 
     MainWindow.show()
+    ui.end()
     sys.exit(app.exec_())
