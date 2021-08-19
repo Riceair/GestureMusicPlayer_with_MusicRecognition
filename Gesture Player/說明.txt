@@ -1,0 +1,3 @@
+使用cmd執行 GestureMusicPlayer.py
+在本路徑下在cmd輸入以下內容:
+python GestureMusicPlayer.py
