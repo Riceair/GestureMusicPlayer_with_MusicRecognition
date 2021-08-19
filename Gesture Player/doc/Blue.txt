@@ -1,7 +1,12 @@
 music/Blue00.mp3
 music/Blue01.mp3
 music/Blue02.mp3
+music/Blue04.mp3
 music/Blue05.mp3
+music/Country09.mp3
+music/EDM01.mp3
+music/Jazz19.mp3
+music/Pop12.mp3
 music/Blue06.mp3
 music/Blue07.mp3
 music/Blue08.mp3
@@ -15,8 +20,3 @@ music/Blue16.mp3
 music/Blue17.mp3
 music/Blue18.mp3
 music/Blue19.mp3
-music/Country09.mp3
-music/EDM01.mp3
-music/Jazz19.mp3
-music/Pop12.mp3
-music/Blue04.mp3

@@ -1,3 +1,9 @@
+music/Disco15.mp3
+music/Disco16.mp3
+music/Jazz09.mp3
+music/Jazz14.mp3
+music/Classical00.mp3
+music/Classical01.mp3
 music/Classical02.mp3
 music/Classical03.mp3
 music/Classical04.mp3
@@ -15,9 +21,3 @@ music/Classical15.mp3
 music/Classical16.mp3
 music/Classical17.mp3
 music/Classical18.mp3
-music/Disco15.mp3
-music/Disco16.mp3
-music/Jazz09.mp3
-music/Jazz14.mp3
-music/Classical00.mp3
-music/Classical01.mp3
