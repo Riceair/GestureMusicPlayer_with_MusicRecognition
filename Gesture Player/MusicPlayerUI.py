@@ -228,7 +228,7 @@ class Ui_GesturePlayer(object):
             ###由於辨識會出現辨識錯誤的情形，因此需要連續出現一定的次數才判定為正確手勢
             current_gesture = 0 #紀錄當前的手勢
             gesture_appear_times = 0 #紀錄當前手勢出現的次數
-            TRUE_APPEAR_TIMES = 100 #連續出現n個frame判為正確
+            TRUE_APPEAR_TIMES = 50 #連續出現n個frame判為正確
             while self.isGesThreadRun:
                 success, img = cap.read()
                 img = detector.findHands(img, draw=True )
