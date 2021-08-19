@@ -161,7 +161,7 @@
    <widget class="QLineEdit" name="cameraNum">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>150</x>
       <y>30</y>
       <width>31</width>
       <height>31</height>
@@ -170,7 +170,7 @@
     <property name="font">
      <font>
       <family>Arial</family>
-      <pointsize>14</pointsize>
+      <pointsize>12</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
@@ -191,7 +191,7 @@
     <property name="font">
      <font>
       <family>Arial Black</family>
-      <pointsize>11</pointsize>
+      <pointsize>10</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
