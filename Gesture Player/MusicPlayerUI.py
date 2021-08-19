@@ -119,7 +119,7 @@ class Ui_GesturePlayer(object):
     def retranslateUi(self, GesturePlayer):
         ##GUI的設定
         self._translate = QtCore.QCoreApplication.translate
-        GesturePlayer.setWindowTitle(self._translate("GesturePlayer", "MainWindow"))
+        GesturePlayer.setWindowTitle(self._translate("GesturePlayer", "GesturePlayer"))
         self.prevButton.setText(self._translate("GesturePlayer", "Prev"))
         self.nextButton.setText(self._translate("GesturePlayer", "Next"))
         self.pauseButton.setText(self._translate("GesturePlayer", "Play"))
