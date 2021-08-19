@@ -23,7 +23,12 @@ import os
 import cv2
 
 
-class Ui_GesturePlayer(object):
+class Ui_GesturePlayer(QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.show()
+
     def setupUi(self, GesturePlayer):
         GesturePlayer.setObjectName("GesturePlayer")
         GesturePlayer.resize(591, 332)
@@ -130,6 +135,8 @@ class Ui_GesturePlayer(object):
         self.label.setText(self._translate("GesturePlayer", "camera num:"))
 
         self.isGesThreadRun=False #手勢辨識執行續的開關
+        self.isCheckPlaying=False
+        self.isPlaying=False #確認現在是否正在執行
         self.__PlayerSetting() #設置Music Player
 
     def __setEventListener(self): #設定按鈕的event listener
@@ -154,6 +161,11 @@ class Ui_GesturePlayer(object):
         self.music_controler = MusicControler()
         self.__stylePress()
         self.__pausePress()
+
+        #設置檢查當前歌曲是否播畢的thread
+        self.isCheckPlaying=True
+        t = threading.Thread(target=self.__checkPlayingThreadJob)
+        t.start()
 
         self.__setButtonEnable(True)
         self.cameraNum.setEnabled(True)
@@ -199,8 +211,10 @@ class Ui_GesturePlayer(object):
     def __pausePress(self):
         self.music_controler.music_pause()
         if self.music_controler.get_isPause():
+            self.isPlaying=False
             self.pauseButton.setText(self._translate("GesturePlayer", "Play"))
         else:
+            self.isPlaying=True
             self.pauseButton.setText(self._translate("GesturePlayer", "Pause"))
     
     def __stylePress(self):
@@ -212,6 +226,11 @@ class Ui_GesturePlayer(object):
         self.className.setText(self._translate("GesturePlayer", style))
         self.songName.setText(self._translate("GesturePlayer", self.music_controler.getCurrentName()[6:]))
 
+    def __checkPlayingThreadJob(self):
+        while self.isCheckPlaying:
+            if not self.music_controler.is_busy and self.isPlaying:
+                print(123)
+                self.__nextPress()
 
     def __gestureThreadJob(self):
         try:
@@ -260,17 +279,13 @@ class Ui_GesturePlayer(object):
             cv2.destroyAllWindows()
             self.gestureUse.setChecked(False)
             self.__gesturePress() #開啟失敗，關閉相機
-    def end(self):
+    def closeEvent(self, event):
         self.isGesThreadRun=False
+        self.isCheckPlaying=False
         if self.music_controler.is_busy():
             self.music_controler.music_stop()
 
 if __name__ == '__main__':  
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_GesturePlayer()
-
-    ui.setupUi(MainWindow) 
-    MainWindow.show()
-    ui.end()
+    window = Ui_GesturePlayer()
     sys.exit(app.exec_())
