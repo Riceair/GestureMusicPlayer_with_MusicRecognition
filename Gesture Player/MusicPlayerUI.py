@@ -222,6 +222,8 @@ class Ui_GesturePlayer(QtWidgets.QMainWindow):
         self.music_controler.clear_music_list()
         self.music_controler.add_music_list(self.playlist)
         self.music_controler.music_play()
+        self.pauseButton.setText(self._translate("GesturePlayer", "Pause"))
+        self.isPlaying=True
 
         self.className.setText(self._translate("GesturePlayer", style))
         self.songName.setText(self._translate("GesturePlayer", self.music_controler.getCurrentName()[6:]))
