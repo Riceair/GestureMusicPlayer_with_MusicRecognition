@@ -228,8 +228,7 @@ class Ui_GesturePlayer(QtWidgets.QMainWindow):
 
     def __checkPlayingThreadJob(self):
         while self.isCheckPlaying:
-            if not self.music_controler.is_busy and self.isPlaying:
-                print(123)
+            if self.isPlaying and not self.music_controler.is_busy():
                 self.__nextPress()
 
     def __gestureThreadJob(self):
